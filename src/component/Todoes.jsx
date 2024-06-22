@@ -6,7 +6,7 @@ function Todoes({todoes,todoStatusHandler,delTodo,editTodo,updateTodoContent}) {
     {
         todoes.length &&
         todoes.map(todo=>
-            <Todo todo={todo} key={todo.id} todoStatusHandler={todoStatusHandler} delTodo={delTodo} editTodo={editTodo} updateTodoContent={updateTodoContent} />
+            <Todo todo={todo} key={todo.id} todoStatusHandler={todoStatusHandler} delTodo={delTodo} updateTodoContent={updateTodoContent} />
       )
     }
     {console.log(todoes)}

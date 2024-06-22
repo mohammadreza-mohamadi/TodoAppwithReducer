@@ -41,6 +41,11 @@ function reducerTodo(state,action)
              let newState = [...state,newTodo]
              return newState;
           }
+        case "deleteTodo":
+          {
+             let newState = state.filter(td=>td.id !== action.payload.todoId)
+             return newState;
+          }
     }
 }
 function App() {
@@ -49,10 +54,7 @@ function App() {
      dispatch({type : "statusTodo",payload:{todoId}})
   }
   const delTodo =(todoId)=>{
-     // dispatch({type:"deleteTodo",payload:{todoId}})
-  }
-  const editTodo =(todoId)=>{
-   // dispatch({type:"editTodo",payload:{todoId}})
+      dispatch({type:"deleteTodo",payload:{todoId}})
   }
 
   const updateTodoContent=(todoId,content)=>{
@@ -72,7 +74,7 @@ function App() {
              <AddTodo addTodo={addTodo} />
          </div>
          <div className="todoesList">
-             <Todoes todoes={todoes} todoStatusHandler={todoStatusHandler} delTodo={delTodo} editTodo={editTodo} updateTodoContent={updateTodoContent} />
+             <Todoes todoes={todoes} todoStatusHandler={todoStatusHandler} delTodo={delTodo}  updateTodoContent={updateTodoContent} />
          </div>
      </div>
   )
