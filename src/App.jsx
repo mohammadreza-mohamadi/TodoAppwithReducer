@@ -21,6 +21,18 @@ function reducerTodo(state,action)
           })
           return updTodo;
        }
+
+       case "updTodo" :
+        {
+          let updTodo = state.map(todoEl=>{
+            if(todoEl.id === action.payload.todoId)
+            {
+              return {...todoEl,content:action.payload.content}
+            }
+            return todoEl
+        })
+          return updTodo;
+        }
     }
 }
 function App() {
@@ -34,6 +46,10 @@ function App() {
   const editTodo =(todoId)=>{
    // dispatch({type:"editTodo",payload:{todoId}})
   }
+
+  const updateTodoContent=(todoId,content)=>{
+    dispatch({type : "updTodo",payload:{todoId,content}})
+  }
   return (
      <div>
          <h2>Todo App with useReducer Hook</h2>
@@ -42,7 +58,7 @@ function App() {
              <button>Add Todo</button>
          </div>
          <div className="todoesList">
-             <Todoes todoes={todoes} todoStatusHandler={todoStatusHandler} />
+             <Todoes todoes={todoes} todoStatusHandler={todoStatusHandler} delTodo={delTodo} editTodo={editTodo} updateTodoContent={updateTodoContent} />
          </div>
      </div>
   )
