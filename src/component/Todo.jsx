@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Todoes from "./Todoes";
 
 function Todo({todo,todoStatusHandler,delTodo,editTodo,updateTodoContent}) {
   const [isEditing,setIsEditing] = useState(false)

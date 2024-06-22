@@ -1,5 +1,6 @@
 import { useReducer } from "react"
 import Todoes from "./component/Todoes"
+import AddTodo from "./component/AddTodo"
 const initialState=[
   {id:0,content:'this is todo 1',done:true},
   {id:1,content:'this is todo 2',done:false},
@@ -33,6 +34,13 @@ function reducerTodo(state,action)
         })
           return updTodo;
         }
+
+        case "addTodo" :
+          {  
+             let newTodo ={id:state.length,content:action.payload.todo,done:false}
+             let newState = [...state,newTodo]
+             return newState;
+          }
     }
 }
 function App() {
@@ -50,12 +58,18 @@ function App() {
   const updateTodoContent=(todoId,content)=>{
     dispatch({type : "updTodo",payload:{todoId,content}})
   }
+
+  const addTodo =(todo)=>{
+    if(todo.length)
+    {  
+      dispatch({type:'addTodo',payload:{todo}})
+    }
+  }
   return (
      <div>
          <h2>Todo App with useReducer Hook</h2>
          <div className="AddTodo">
-             <input type="text" value={todoes.content} />
-             <button>Add Todo</button>
+             <AddTodo addTodo={addTodo} />
          </div>
          <div className="todoesList">
              <Todoes todoes={todoes} todoStatusHandler={todoStatusHandler} delTodo={delTodo} editTodo={editTodo} updateTodoContent={updateTodoContent} />

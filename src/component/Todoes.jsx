@@ -9,6 +9,7 @@ function Todoes({todoes,todoStatusHandler,delTodo,editTodo,updateTodoContent}) {
             <Todo todo={todo} key={todo.id} todoStatusHandler={todoStatusHandler} delTodo={delTodo} editTodo={editTodo} updateTodoContent={updateTodoContent} />
       )
     }
+    {console.log(todoes)}
     </>
   )
 }
